@@ -116,13 +116,11 @@ We need `node` & `npm`, as well as packages `live-server` and `eslint` installed
       import React from 'react';
 
       export default function WeaponSelector(props) {
-        const { play } = props;
-
         return (
           <div className='weapon-selector-container'>
-            <button onClick={() => play('Rock')}>Rock</button>
-            <button onClick={() => play('Paper')}>Paper</button>
-            <button onClick={() => play('Scissors')}>Scissors</button>
+            <button onClick={() => props.play('Rock')}>Rock</button>
+            <button onClick={() => props.play('Paper')}>Paper</button>
+            <button onClick={() => props.play('Scissors')}>Scissors</button>
           </div>
         );
       }
