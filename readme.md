@@ -137,7 +137,7 @@ We need `node` & `npm`, as well as packages `live-server` and `eslint` installed
 
       export default class Container extends React.Component {
         play(weapon) {
-          console.log('playing!');
+          console.log(`playing with ${weapon}`);
         }
 
         render() {
