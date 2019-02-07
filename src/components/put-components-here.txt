@@ -1,0 +1,1 @@
+Put your components inside the components folder
