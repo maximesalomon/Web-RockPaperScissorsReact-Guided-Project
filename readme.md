@@ -184,24 +184,24 @@ We need `node` & `npm`, as well as packages `live-server` and `eslint` installed
       }
     ```
   * Have the presentational components consume state instead of hard-coded values:
-      ```javascript
-        render() {
-          const { currentWeapons, score, fightHistory, message } = this.state;
+    ```javascript
+      render() {
+        const { currentWeapons, score, fightHistory, message } = this.state;
 
-          return (
-            <div className="container">
-              <Header />
-              <History fightHistory={fightHistory} />
-              <MainBoard
-                score={score}
-                currentWeapons={currentWeapons}
-                message={message}
-              />
-              <WeaponSelector play={this.play} />
-            </div>
-          );
-        }
-     ```
+        return (
+          <div className="container">
+            <Header />
+            <History fightHistory={fightHistory} />
+            <MainBoard
+              score={score}
+              currentWeapons={currentWeapons}
+              message={message}
+            />
+            <WeaponSelector play={this.play} />
+          </div>
+        );
+      }
+    ```
 
 ## 7. Create the utility methods that can update each slice of state
   * currentWeapons updater:
@@ -246,18 +246,18 @@ We need `node` & `npm`, as well as packages `live-server` and `eslint` installed
       }
     ```
 
-## 8. Create the play method
+## 8. Create the play method and wrap-up
   * The play method consumes the other methods:
-  ```javascript
+    ```javascript
       play(weapon) {
         const randomWeaponNumber = Math.floor(Math.random() * 3);
-        const randomWeapon = Object.values(weapons)[randomWeaponNumber];
+        const randomWeapon = ['Rock', 'Paper', 'Scissors'][randomWeaponNumber];
         this.updateCurrentWeapons(weapon, randomWeapon);
 
         const win = (
-          (weapon === weapons.rock && randomWeapon === weapons.scissors) ||
-          (weapon === weapons.paper && randomWeapon === weapons.rock) ||
-          (weapon === weapons.scissors && randomWeapon === weapons.paper)
+          (weapon === 'Rock' && randomWeapon === 'Scissors') ||
+          (weapon === 'Paper' && randomWeapon === 'Rock') ||
+          (weapon === 'Scissors' && randomWeapon === 'Paper')
         );
 
         const tie = (weapon === randomWeapon);
@@ -276,4 +276,13 @@ We need `node` & `npm`, as well as packages `live-server` and `eslint` installed
           this.setMessage('You Lose!');
         }
       }
-  ```
+    ```
+  * Create default values for state inside Container constructor:
+    ```javascript
+      this.state = {
+        currentWeapons: { user: null, computer: null },
+        score: { user: 0, computer: 0 },
+        fightHistory: [],
+        message: null,
+      };
+    ```
