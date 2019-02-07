@@ -1,0 +1,71 @@
+* {
+  box-sizing: border-box;
+}
+html, body {
+  margin: 0;
+}
+/* container */
+.container {
+  padding: 20px;
+}
+/* header */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+}
+.header-fighter {
+  display: flex;
+  align-items: center;
+}
+.header-image-container {
+  width: 30px;
+  height: 30px;
+  margin: 0 4px;
+}
+.header-image-container img {
+  width: 100%;
+  height: auto;
+}
+/* history */
+.history-container {
+  height: 30px;
+  background-color: lightgoldenrodyellow;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+  border-radius: 15px;
+  margin-top: 40px;
+  padding: 0 10px;
+}
+/* main board */
+.main-board-container {
+  height: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-board-battle {
+  display: flex;
+  flex-direction: column;
+}
+.main-board-score {
+  font-size: 80px;
+}
+.main-board-weapons {
+  display: flex;
+  justify-content: space-between;
+}
+/* weapon selector */
+.weapon-selector-container {
+  display: flex;
+  justify-content: center;
+}
+.weapon-selector-container button {
+  padding: 10px 20px;
+  margin: 8px;
+  border-radius: 4px;
+}
+h2 {
+  text-align: center;
+}
