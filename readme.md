@@ -202,3 +202,78 @@ We need `node` & `npm`, as well as packages `live-server` and `eslint` installed
           );
         }
      ```
+
+## 7. Create the utility methods that can update each slice of state
+  * currentWeapons updater:
+    ```javascript
+        updateCurrentWeapons(user, computer) {
+          this.setState({
+            currentWeapons: { user, computer },
+          });
+        }
+    ```
+  * fightHistory updater:
+    ```javascript
+      addToFightHistory(points) {
+        this.setState(st => ({ fightHistory: [...st.fightHistory, points] }));
+      }
+    ```
+  * score updaters (we'll use two):
+    ```javascript
+      updateScoreTie() {
+        this.setState(st => ({
+          score: {
+            user: st.score.user + 1,
+            computer: st.score.computer + 1,
+          },
+        }));
+      }
+    ```
+    ```javascript
+      updateScoreWin(fighter) {
+        this.setState(st => ({
+          score: {
+            ...st.score,
+            [fighter]: st.score[fighter] + 2,
+          },
+        }));
+      }
+    ```
+  * message updater:
+    ```javascript
+      setMessage(message) {
+        this.setState({ message });
+      }
+    ```
+
+## 8. Create the play method
+  * The play method consumes the other methods:
+  ```javascript
+      play(weapon) {
+        const randomWeaponNumber = Math.floor(Math.random() * 3);
+        const randomWeapon = Object.values(weapons)[randomWeaponNumber];
+        this.updateCurrentWeapons(weapon, randomWeapon);
+
+        const win = (
+          (weapon === weapons.rock && randomWeapon === weapons.scissors) ||
+          (weapon === weapons.paper && randomWeapon === weapons.rock) ||
+          (weapon === weapons.scissors && randomWeapon === weapons.paper)
+        );
+
+        const tie = (weapon === randomWeapon);
+
+        if (win) {
+          this.updateScoreWin('user');
+          this.addToFightHistory(2);
+          this.setMessage('You Win!');
+        } else if (tie) {
+          this.updateScoreTie();
+          this.addToFightHistory(1);
+          this.setMessage('It\'s a tie!');
+        } else {
+          this.updateScoreWin('computer');
+          this.addToFightHistory(0);
+          this.setMessage('You Lose!');
+        }
+      }
+  ```
