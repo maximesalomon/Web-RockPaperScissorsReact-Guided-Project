@@ -126,7 +126,7 @@ We need `node` & `npm`, as well as packages `live-server` and `eslint` installed
       }
     ```
 
-## 5. Create the Container
+## 5. Create the Container and tie the app together
   * src/components/Container.jsx
     ```javascript
       import React from 'react';
@@ -156,3 +156,49 @@ We need `node` & `npm`, as well as packages `live-server` and `eslint` installed
         }
       }
     ```
+  * src/App.jsx
+    ```javascript
+      import React from 'react';
+      import ReactDOM from 'react-dom';
+      import Container from './components/Container';
+
+      ReactDOM.render(
+        <Container />, document.querySelector('#target'),
+      );
+    ```
+
+## 6. Initialize state in the container
+  * Create a constructor function inside Container.jsx to initialize state, and  bind play method:
+    ```javascript
+      constructor(props) {
+        super(props);
+
+        this.state = {
+          currentWeapons: { user: 'Rock', computer: 'Scissors' },
+          score: { user: 8, computer: 6 },
+          fightHistory: [1, 2, 1, 0, 0, 2, 2],
+          message: 'You Win!',
+        };
+
+        this.play = this.play.bind(this);
+      }
+    ```
+  * Have the presentational components consume state instead of hard-coded values:
+      ```javascript
+        render() {
+          const { currentWeapons, score, fightHistory, message } = this.state;
+
+          return (
+            <div className="container">
+              <Header />
+              <History fightHistory={fightHistory} />
+              <MainBoard
+                score={score}
+                currentWeapons={currentWeapons}
+                message={message}
+              />
+              <WeaponSelector play={this.play} />
+            </div>
+          );
+        }
+     ```
