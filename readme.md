@@ -1,7 +1,7 @@
 # Objectives
   * Learn about application state.
   * Learn to organize application state into a state object.
-  * Understand that the UI in its totality is the return value of a function that takes app state. `const appUI = appState => UI`
+  * Understand the app as a function that takes state and returns UI. `const appUI = appState => UI`
   * Learn to use a top-level container component to hold (1) the state and (2) the methods that operate on this state.
   * Learn to use presentational components that take slices of this state as props, and return UI based on these slices.
   * Understand that presentational components change state indirectly, using functions passed in as props.
