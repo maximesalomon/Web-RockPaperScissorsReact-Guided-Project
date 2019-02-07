@@ -146,9 +146,9 @@ We need `node` & `npm`, as well as packages `live-server` and `eslint` installed
               <Header />
               <History fightHistory={[1, 0, 1]} />
               <MainBoard
-                score={{ user: 2, computer: 4}}
-                currentWeapons={{ user: 'Rock', computer: 'Rock'}}
-                message='It\'s a Tie!'
+                score={{ user: 2, computer: 4 }}
+                currentWeapons={{ user: 'Rock', computer: 'Rock' }}
+                message='It is a Tie!'
               />
               <WeaponSelector play={this.play.bind(this)} />
             </div>

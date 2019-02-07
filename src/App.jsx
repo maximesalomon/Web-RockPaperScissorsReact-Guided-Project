@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Container from './components/Container';
 
 ReactDOM.render(
-  <div>Rock Paper Scissors</div>, document.querySelector('#target'),
+  <Container />, document.querySelector('#target'),
 );
