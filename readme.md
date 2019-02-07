@@ -168,7 +168,7 @@ We need `node` & `npm`, as well as packages `live-server` and `eslint` installed
     ```
 
 ## 6. Initialize state in the container
-  * Create a constructor function inside Container.jsx to initialize state, and  bind play method:
+  * Create a constructor function inside the Container component to initialize state, and  bind play method:
     ```javascript
       constructor(props) {
         super(props);
